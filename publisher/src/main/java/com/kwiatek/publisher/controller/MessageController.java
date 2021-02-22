@@ -30,4 +30,8 @@ public class MessageController {
         return "Notyfikacja wysłana";
     }
 
+    public String testGita(){
+        return "Git";
+    }
+
 }

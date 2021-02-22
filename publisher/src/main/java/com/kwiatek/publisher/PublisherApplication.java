@@ -1,4 +1,4 @@
-package com.kwiatek.publisher.model;
+package com.kwiatek.publisher;
 
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;

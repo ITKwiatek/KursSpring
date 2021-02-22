@@ -1,4 +1,4 @@
-package com.kwiatek.receiver;
+package com.kwiatek.receiver.model;
 
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;

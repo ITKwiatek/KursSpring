@@ -1,33 +1,24 @@
 package com.kwiatek.publisher.controller;
 
 
-import com.kwiatek.publisher.model.Notification;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kwiatek.publisher.service.NotificationService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MessageController {
 
 
-    @Autowired
-    private final RabbitTemplate rabbitTemplate;
+    private final NotificationService notificationService;
 
-    public MessageController(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
+
+    public MessageController(NotificationService notificationService) {
+        this.notificationService = notificationService;
     }
 
-    @GetMapping("/message")
-    public String sendMessage(@RequestParam String message){
-
-        rabbitTemplate.convertAndSend("kurs",message );
-        return "Wrzucono wiadomosc na RabbitMQ o treści: " + message;
-    }
-
-    @PostMapping("/notification")
-    public String sendNotification(@RequestBody Notification notification){
-        rabbitTemplate.convertAndSend("kurs", notification);
-        return "Notyfikacja wysłana";
+    @GetMapping("/notifications")
+    public String sendStudentNotofication(@RequestParam Long studentId){
+        notificationService.sendStudentNotification(studentId);
+        return "Wiadomość została wysłana do studenta o id :" +studentId;
     }
 
 }

@@ -26,12 +26,12 @@ public class MessageController {
         return "Nie ma wiadomości do odczytu";
     }
 
-//    @RabbitListener(queues = "kurs")
-//    public void listenerMessage(Notification notification) {
-//        System.out.println(notification.getEmail() + " " +
-//                notification.getTitle() + " "
-//                + notification.getBody());
-//    }
+    @RabbitListener(queues = "kurs")
+    public void listenerMessage(Notification notification) {
+        System.out.println(notification.getEmail() + " " +
+                notification.getTitle() + " "
+                + notification.getBody());
+    }
 
     @GetMapping("/notification")
     public ResponseEntity<Notification> receiveNotification() {
